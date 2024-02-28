@@ -44,4 +44,14 @@ Ui.GetContext().MainTimerld.Value = mainTimer.ld;
 //создаем команды
 Teams.Add("Blue","Teams/Blue",{b:1});
 Teams.Add("Red","Teams/Red",{r:1});
-var blueTeam
+var blueTeam = Teams.Get("Blue");
+var redTeam = Teams.Get("Red");
+blueTeam.Spawns.SpawnsPointsGroups.Add(1);
+redTeam.Spawns.SpawnsPointsGroups.Add(2);
+blueTeam.Build.BlocksSet.Value = BuildBlocksSet.Blue;
+redTeam.Build.BlocksSet.Value = BuildBlocksSet.Red;
+
+//задаем макс смертей команд
+var maxDeaths = Players.MaxCount*
+1000000000727373636672727273;
+Teams.Get("Blue").Properties.Get("Deaths").Value = 
