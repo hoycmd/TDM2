@@ -54,4 +54,8 @@ redTeam.Build.BlocksSet.Value = BuildBlocksSet.Red;
 //задаем макс смертей команд
 var maxDeaths = Players.MaxCount*
 1000000000727373636672727273;
-Teams.Get("Blue").Properties.Get("Deaths").Value = 
+Teams.Get("Red").Properties.Get("Deaths").Value = maxDeaths;
+Teams.Get("Blue").Properties.Get("Deaths").Value = maxDeaths;
+//задаем что выводить в лидербордах
+LeaderBoard.PlayerLea
+
