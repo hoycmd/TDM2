@@ -53,9 +53,61 @@ redTeam.Build.BlocksSet.Value = BuildBlocksSet.Red;
 
 //задаем макс смертей команд
 var maxDeaths = Players.MaxCount*
-1000000000727373636672727273;
+lnfinity;
 Teams.Get("Red").Properties.Get("Deaths").Value = maxDeaths;
 Teams.Get("Blue").Properties.Get("Deaths").Value = maxDeaths;
 //задаем что выводить в лидербордах
-LeaderBoard.PlayerLea
+LeaderBoard.PlayerLeaderBoardValues
+= [
+  {
+   Value: "Kills",
+   DisplayName: "Statistics/Kills",
+   ShortDisplayName: "Statistics/KillsShort"
+  },
+  {
+  Value: "Deaths",
+  DisplayName: "Statistics/Deaths",
+  ShortDisplayName: "Statistics/DeathsShort"
+  },
+  {
+  Value: "Spawns",
+  DisplayName: "Statistics/Spawns",
+  ShortDisplayName: "Statistics/SpawnsShort"
+  },
+  {
+  Value: "Scores",
+  DisplayName: "Statistics/Scores",
+  ShortDisplayName: "Statistics/ScoresShort"
+  }
+  ];
+  LeaderBoard.TeamLeaderBoardValue = 
+  {
+   Value: "Deaths",
+   DisplayName: "Statistics/Deaths",
+   ShortDisplayName: "Statistics/Deaths"
+  };
+  //вес игрока в лидерборде
+  LeaderBoard.PlayersWeightGetter.Set(function(player){
+  return
+  player.Properties.Get("Kills").Value;
+  });
 
+  //задаем что выводить вверху
+  Ui.GetContext().TeamProp1.Value = 
+  { Team:"Blue",Prop:"Deaths"};
+  Ui.GetContext().TeamProp2.Value = 
+  { Team:"Red",Prop:"Deaths"};
+
+  //разрешаем вход в команды по запросу
+  Teams.OnRequestJoinTeam.Add(function(player,team){team.Add(player);});
+  //спавн по входу в команду 
+  Teams.OnPlayerChangeTeam.Add(function(player){player.Spawns.Spawn()});
+
+  //делаем игроков неу€звимыми после спавна
+  var 
+  immortalityTimerName="immortality";
+  Spawns.GetContext().OnSpawn.Add(function(player){
+
+  player.Properties.lmmortality.Value=true;
+
+  timer=player
