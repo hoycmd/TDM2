@@ -1,5 +1,5 @@
 //var Color = 
-importNamespace('PixelCombatsScrip
+importNamespace('ChickenGunScrip
 tingApi.Structures');
 //var System = 
 importNamespace(system);
